@@ -1,9 +1,12 @@
 <!DOCTYPE html>
 <html>
+<head>
+<meta charset="UTF-8">
+</head>
 <body BGCOLOR="#C3E0EC">
 
 <p style="color:#365A28">Rotation Gauche(0)-Droite(180):</p>
-<form style="color:#EE181C" method="post" action="/script/action.py">
+<form style="color:#EE181C" method="post" action="cgi-bin/action.py">
         Gauche(0)<input type="range" name="motor_base" min="0" max="180" step="1" value="90" oninput="result.value=parseInt(motor_base.value)"/>Droite(180): (
         <output name="result" style="color:DodgerBlue;">90</output> )
 <p style="color:#365A28">Rotation Bas(0)-Haut(180):</p>

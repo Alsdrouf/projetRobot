@@ -1,22 +1,35 @@
 #!/usr/bin/env python
 # -*- coding: UTF-8 -*-# enable debugging
 import cgi
-import math
 import time
+"""import RPi.GPIO as GPIO
+GPIO.setmode(GPIO.BCM)
+GPIO.setup(17, GPIO.OUT)
+GPIO.setwarnings(False)
+pwm=GPIO.PWM(17,100)
+pwm.start(5)
+angle_choisi=float(20)/10+5
+pwm.ChangeDutyCycle(angle_choisi)
+time.sleep(1)
+GPIO.cleanup()"""
 formData = cgi.FieldStorage()
 angle= formData.getvalue('Bras_bas_haut')
 angle_deux=formData.getvalue('Bras_avant_arriere')
 angle_pince=formData.getvalue('pince')
 angle_rota=formData.getvalue('motor_base')
 Log=open("Log.txt","a")
-Log.write("["+str(time.asctime( time.localtime(time.time())))+"] "+str(angle)+";"+str(angle_deux)+";"+str(angle_pince)+";"+str(angle_rota))
+Log.write("["+str(time.asctime( time.localtime(time.time())))+"] "+str(angle)+";"+str(angle_deux)+";"+str(angle_pince)+";"+str(angle_rota)+"\n")
 Log.close()
-#cgi.test()
 print "Content-type:text/html\r\n\r\n"
 
 print '<html>'
+print '<head>'
+print '<meta charset="UTF-8">'
+print '</head>'
 print '<body bgcolor="#C3E0EC">'
-print '<form style=color:DodgerBlue;>'
+print '<form style=color:DodgerBlue method="post" class=inline action="Log.py">'
+print '<button calss="float-left submit-button" >Log</button>'
+print '<br>'
 print 'Rotation Gauche-Droite : '
 print formData.getvalue('motor_base')
 print '<br>'
@@ -86,6 +99,6 @@ print 'ctx.moveTo(400,250);'
 print 'var longueur_bras=Math.sqrt(Math.pow((x-305),2)+Math.pow((0),2));'
 print 'ctx.lineTo(longueur_bras*Math.cos(('+str(angle_rota)+'-90)/180*Math.PI)+400,longueur_bras*Math.sin(('+str(angle_rota)+'-90)/180*Math.PI)+250);'
 print 'ctx.stroke();'
-print '</script>' 
+print '</script>'
 print '</body>'
 print '</html>'
