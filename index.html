@@ -7,21 +7,138 @@
 
 <p style="color:#365A28">Rotation Gauche(0)-Droite(180):</p>
 <form style="color:#EE181C" method="post" action="cgi-bin/action.py">
-        Gauche(0)<input type="range" name="motor_base" min="0" max="180" step="1" value="90" oninput="result.value=parseInt(motor_base.value)"/>Droite(180): (
-        <output name="result" style="color:DodgerBlue;">90</output> )
+        Gauche(0)<input id="moteur_base" type="range" name="motor_base" min="0" max="180" step="1" value="90" oninput="Clear2(); Clear(); voiture2(); voiture(); Value(); result.value=parseInt(motor_base.value)"/>Droite(180): (
+        <output id="Resultat"  name="result" style="color:DodgerBlue;">90</output> )
 <p style="color:#365A28">Rotation Bas(0)-Haut(180):</p>
-        Bas(0)<input type="range" name="Bras_bas_haut" min="0" max="90" step="1" value="45" oninput="result1.value=parseInt(Bras_bas_haut.value)"/>Haut(90): (
+        Bas(0)<input id="Rota_b_h" type="range" name="Bras_bas_haut" min="0" max="90" step="1" value="45" oninput="Clear2(); Clear(); voiture2(); voiture(); Value(); special(); result1.value=parseInt(Bras_bas_haut.value)"/>Haut(90): (
         <output name="result1" style="color:DodgerBlue;">45</output> )
 <p style="color:#365A28">Rotation Arrière(0)-Avant(180):</p>
-        Avant(0)<input type="range" name="Bras_avant_arriere" min="0" max="90" step="1" value="45" oninput="result2.value=parseInt(Bras_avant_arriere.value)"/>Arrière(90): (
+        Avant(0)<input id="Rota_a_a" type="range" name="Bras_avant_arriere" min="0" max="90" step="1" value="45" oninput="Clear2(); Clear(); voiture2(); voiture(); Value(); special(); result2.value=parseInt(Bras_avant_arriere.value)"/>Arrière(90): (
         <output name="result2" style="color:DodgerBlue;">45</output> )
 <p style="color:#365A28">Pince Ouvert(0)-Fermer(180):</p>
-        Fermer(10)<input type="range" name="pince" min="10" max="90" step="1" value="40" oninput="result3.value=parseInt(pince.value)"/>Ouvert(90): (
+        Fermer(10)<input id="Pince" type="range" name="pince" min="10" max="90" step="1" value="40" oninput="Clear2(); Clear(); voiture2() voiture(); Value(); special(); result3.value=parseInt(pince.value)"/>Ouvert(90): (
         <output name="result3" style="color:DodgerBlue;">40</output> )
 <br>
   <input type="submit" value="Envoyer">
 </form>
+<canvas id="Canvas_vue_de_cote" width="800" height="300" style="border:1px solid #000000"></canvas>
+<canvas id="Vue_de_dessus" width="800" height="500" style="border:1px solid #000000"></canvas>
 <script>
+voiture();
+Value();
+function voiture(){
+//Vue de coté///////////////////////////////////////
+var c=document.getElementById("Canvas_vue_de_cote")
+var ctx=c.getContext("2d")
+ctx.beginPath();
+//Roue de gauche////////////
+ctx.arc(150,240,60,0,2*Math.PI);
+ctx.moveTo(150,240);
+ctx.lineTo(150,300);
+ctx.moveTo(150,240);
+ctx.lineTo(150,180);
+ctx.moveTo(150,240);
+ctx.lineTo(210,240);
+ctx.moveTo(150,240);
+ctx.lineTo(90,240);
+///////////////////////////
+
+//Roue de droite///////////
+ctx.arc(460,240,60,0,2*Math.PI);
+ctx.moveTo(460,240);
+ctx.lineTo(460,300);
+ctx.moveTo(460,240);
+ctx.lineTo(460,180);
+ctx.moveTo(460,240);
+ctx.lineTo(400,240);
+ctx.moveTo(460,240);
+ctx.lineTo(520,240);
+///////////////////////////
+
+ctx.moveTo(150,180);
+ctx.lineTo(460,180);
+ctx.stroke();
+ctx.closePath();
+///////////////////////////////////////////////////
+}
+function voiture2() {
+//Vue de dessus////////////////////////////////////
+var c=document.getElementById("Vue_de_dessus")
+var ctx=c.getContext("2d")
+//Roue et body////////////
+ctx.rect(250,150,300,200);
+ctx.rect(250,150,100,-50);
+ctx.rect(550,150,-100,-50);
+ctx.rect(550,350,-100,50);
+ctx.rect(250,350,100,50);
+//////////////////////////
+
+ctx.stroke();
+///////////////////////////////////////////////////
+}
+function Value(){
+	//Toutes les vars////////////////////////////////////////
+	var c=document.getElementById("Canvas_vue_de_cote")
+	var ctx=c.getContext("2d")
+	var moteur=document.getElementById("moteur_base").value
+	var Bras_b_h=document.getElementById("Rota_b_h").value
+	var Bras_a_a=document.getElementById("Rota_a_a").value
+	var pince=document.getElementById("Pince").value
+	var x;
+	var y;
+	/////////////////////////////////////////////////////////
+	
+	//Bras bas haut//////////////////////////////////////////
+	ctx.beginPath();
+	ctx.moveTo(305,180)
+	ctx.lineTo(155*Math.cos(Bras_b_h/180*Math.PI)+305,-155*Math.sin(Bras_b_h/180*Math.PI)+180);
+	/////////////////////////////////////////////////////////
+
+	//Bras avant arrière/////////////////////////////////////
+	var x=(155*Math.cos(Bras_b_h/180*Math.PI)+305)+155*Math.cos(Bras_a_a/180*Math.PI);
+	var y=(-155*Math.sin(Bras_b_h/180*Math.PI)+180)+155*Math.sin(Bras_a_a/180*Math.PI);
+	ctx.lineTo(x, y)
+	/////////////////////////////////////////////////////////
+
+	//Pince//////////////////////////////////////////////////
+	ctx.lineTo(x+50*Math.cos(pince/180*Math.PI),y+50*Math.sin(pince/180*Math.PI));
+	ctx.lineTo(x+50*Math.cos(pince/180*Math.PI)+10,y+50*Math.sin(pince/180*Math.PI)-10);
+	ctx.moveTo(x, y);
+	ctx.lineTo(x+50*Math.cos(pince/180*Math.PI),y-50*Math.sin(pince/180*Math.PI));
+	ctx.lineTo(x+50*Math.cos(pince/180*Math.PI)+10,y-50*Math.sin(pince/180*Math.PI)+10);
+	/////////////////////////////////////////////////////////
+
+	//Premiere fin///////////////////////////////////////////
+	ctx.stroke();
+	ctx.closePath();
+	/////////////////////////////////////////////////////////
+
+	//Bras(vue de dessus)////////////////////////////////////
+	var c=document.getElementById("Vue_de_dessus");
+	var ctx=c.getContext("2d");
+	var longueur_bras=Math.sqrt(Math.pow((x-305),2)+Math.pow((0),2));
+	ctx.beginPath();
+	Clear2();
+	voiture2();
+	ctx.moveTo(400,250);
+	ctx.lineTo(longueur_bras*Math.cos((moteur-90)/180*Math.PI)+400,longueur_bras*Math.sin((moteur-90)/180*Math.PI)+250);
+	/////////////////////////////////////////////////////////
+	
+	//Deuxieme fin///////////////////////////////////////////
+	ctx.stroke();
+	ctx.closePath();
+	/////////////////////////////////////////////////////////
+}
+function Clear(){
+	var c=document.getElementById("Canvas_vue_de_cote")
+	var ctx=c.getContext("2d")
+	ctx.clearRect(0, 0, 800, 300)
+}
+function Clear2(){
+	var c=document.getElementById("Vue_de_dessus")
+	var ctx=c.getContext("2d")
+	ctx.clearRect(0, 0, 800, 500)
+}
 </script>
 
 </body>
