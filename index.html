@@ -5,19 +5,31 @@
 </head>
 <body BGCOLOR="#C3E0EC">
 
-<p style="color:#365A28">Rotation Gauche(0)-Droite(180):</p>
+<p style="color:#365A28">Rotation Gauche(<span style="color:DodgerBlue">0</span>)-Droite(<span style="color:DodgerBlue">180</span>):</p>
 <form style="color:#EE181C" method="post" action="cgi-bin/action.py">
-        Gauche(0)<input id="moteur_base" type="range" name="motor_base" min="0" max="180" step="1" value="90" oninput="Clear2(); Clear(); voiture2(); voiture(); Value(); result.value=parseInt(motor_base.value)"/>Droite(180): (
+	<button style="color:#cc0000" type="button" onclick="moteur_base.value=parseInt(moteur_base.value)-1; result.value=moteur_base.value; number1.value=moteur_base.value">-</button>
+        Gauche(<span style="color:DodgerBlue">0</span>)<input id="moteur_base" type="range" name="motor_base" min="0" max="180" step="1" value="90" oninput="Clear2(); Clear(); voiture2(); voiture(); Value(); result.value=parseInt(motor_base.value); number1.value=moteur_base.value"/>Droite(<span style="color:DodgerBlue">180</span>): (
         <output name="result" style="color:DodgerBlue;">90</output> )
-<p style="color:#365A28">Rotation Bas(0)-Haut(180):</p>
-        Bas(0)<input id="Rota_b_h" type="range" name="Bras_bas_haut" min="0" max="90" step="1" value="45" oninput="Clear2(); Clear(); voiture2(); voiture(); Value(); result1.value=parseInt(Bras_bas_haut.value)"/>Haut(90): (
+	<button style="color:#00cc00" type="button" onclick="moteur_base.value=parseInt(moteur_base.value)+1; number1.value=moteur_base.value; result.value=moteur_base.value">+</button>
+	<input style="color:DodgerBlue" type="number" id="number1" value="90" min="0" max="180" oninput="moteur_base.value=parseInt(number1.value); result.value=moteur_base.value">
+<p style="color:#365A28">Rotation Bas(<span style="color:DodgerBlue">0</span>)-Haut(<span style="color:DodgerBlue">90</span>):</p>
+	<button style="color:#cc0000" type="button" onclick="Rota_b_h.value=parseInt(Rota_b_h.value)-1; result1.value=Rota_b_h.value; number2.value=Rota_b_h.value">-</button>
+        Bas(<span style="color:DodgerBlue">0</span>)<input id="Rota_b_h" type="range" name="Bras_bas_haut" min="0" max="90" step="1" value="45" oninput="Clear2(); Clear(); voiture2(); voiture(); Value(); result1.value=parseInt(Bras_bas_haut.value); number2.value=Rota_b_h.value"/>Haut(<span style="color:DodgerBlue">90</span>): (
         <output name="result1" style="color:DodgerBlue;">45</output> )
-<p style="color:#365A28">Rotation Arrière(0)-Avant(180):</p>
-        Avant(0)<input id="Rota_a_a" type="range" name="Bras_avant_arriere" min="0" max="90" step="1" value="45" oninput="Clear2(); Clear(); voiture2(); voiture(); Value(); result2.value=parseInt(Bras_avant_arriere.value)"/>Arrière(90): (
+	<button style="color:#00cc00" type="button" onclick="Rota_b_h.value=parseInt(Rota_b_h.value)+1; result1.value=Rota_b_h.value; number2.value=Rota_b_h.value">+</button>
+	<input style="color:DodgerBlue" type="number" id="number2" value="45" min="0" max="90"  oninput="Rota_b_h.value==parseInt(number2.value); result1.value=Rota_b_h.value">
+<p style="color:#365A28">Rotation Avant(<span style="color:DodgerBlue">0</span>)-Arrière(<span style="color:DodgerBlue">90</span>):</p>
+	<button style="color:#cc0000"  type="button" onclick="Rota_a_a.value=parseInt(Rota_a_a.value)-1; number3.value=Rota_a_a.value; result2.value=Rota_a_a.value">-</button>
+        Avant(<span style="color:DodgerBlue">0</span>)<input id="Rota_a_a" type="range" name="Bras_avant_arriere" min="0" max="90" step="1" value="45" oninput="Clear2(); Clear(); voiture2(); voiture(); Value(); result2.value=parseInt(Bras_avant_arriere.value); number3.value=Rota_a_a.value"/>Arrière(<span style="color:DodgerBlue">90</span>): (
         <output name="result2" style="color:DodgerBlue;">45</output> )
-<p style="color:#365A28">Pince Ouvert(0)-Fermer(180):</p>
-        Fermer(10)<input id="Pince" type="range" name="pince" min="10" max="90" step="1" value="40" oninput="Clear2(); Clear(); voiture2(); voiture(); Value(); result3.value=parseInt(pince.value)"/>Ouvert(90): (
-        <output name="result3" style="color:DodgerBlue;">40</output> )
+	<button style="color:#00cc00" type="button" onclick="Rota_a_a.value=parseInt(Rota_a_a.value)+1; result2.value=Rota_a_a.value; number3.value=Rota_a_a.value">+</button>
+	<input style="color:DodgerBlue" type="number" id="number3" value="45" min="0" max="90" oninput="Rota_a_a.value=number3.value; result2.value=Rota_a_a.value">
+<p style="color:#365A28">Pince Fermer(<span style="color:DodgerBlue">10</span>)-Ouverte(<span style="color:DodgerBlue">90</span>):</p>
+	<button style="color:#cc0000" type="button" onclick="pince.value=parseInt(pince.value)-1; result3.value=pince.value; number4.value=pince.value">-</button>
+        Fermer(<span style="color:DodgerBlue">10</span>)<input id="Pince" type="range" name="pince" min="10" max="90" step="1" value="50" oninput="Clear2(); Clear(); voiture2(); voiture(); Value(); result3.value=parseInt(pince.value); number4.value=pince.value"/>Ouvert(<span style="color:DodgerBlue">90</span>): (
+        <output id="output4" name="result3" style="color:DodgerBlue;">50</output> )
+	<button style="color:#00cc00" type="button" onclick="pince.value=parseInt(pince.value)+1; result3.value=pince.value; number4.value=pince.value">+</button>
+	<input style="color:DodgerBlue" type="number" id="number4" value="50" min="10"  max="90" oninput="pince.value=parseInt(number4.value); result3.value=pince.value">
 <br>
   <input type="submit" value="Envoyer">
 </form>
@@ -30,6 +42,7 @@ function voiture(){
 //Vue de coté///////////////////////////////////////
 var c=document.getElementById("Canvas_vue_de_cote")
 var ctx=c.getContext("2d")
+ctx.strokeStyle='#000000';
 ctx.beginPath();
 //Roue de gauche////////////
 ctx.arc(150,240,60,0,2*Math.PI);
@@ -65,6 +78,7 @@ function voiture2() {
 //Vue de dessus////////////////////////////////////
 var c=document.getElementById("Vue_de_dessus")
 var ctx=c.getContext("2d")
+
 //Roue et body////////////
 ctx.rect(250,150,300,200);
 ctx.rect(250,150,100,-50);
@@ -90,7 +104,8 @@ function Value(){
 	
 	//Bras bas haut//////////////////////////////////////////
 	ctx.beginPath();
-	ctx.moveTo(305,180)
+	ctx.strokeStyle= '#0000ff';
+	ctx.moveTo(305,180);
 	ctx.lineTo(155*Math.cos(Bras_b_h/180*Math.PI)+305,-155*Math.sin(Bras_b_h/180*Math.PI)+180);
 	/////////////////////////////////////////////////////////
 
