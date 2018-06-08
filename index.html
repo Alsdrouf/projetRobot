@@ -8,15 +8,15 @@
 <p style="color:#365A28">Rotation Gauche(0)-Droite(180):</p>
 <form style="color:#EE181C" method="post" action="cgi-bin/action.py">
         Gauche(0)<input id="moteur_base" type="range" name="motor_base" min="0" max="180" step="1" value="90" oninput="Clear2(); Clear(); voiture2(); voiture(); Value(); result.value=parseInt(motor_base.value)"/>Droite(180): (
-        <output id="Resultat"  name="result" style="color:DodgerBlue;">90</output> )
+        <output name="result" style="color:DodgerBlue;">90</output> )
 <p style="color:#365A28">Rotation Bas(0)-Haut(180):</p>
-        Bas(0)<input id="Rota_b_h" type="range" name="Bras_bas_haut" min="0" max="90" step="1" value="45" oninput="Clear2(); Clear(); voiture2(); voiture(); Value(); special(); result1.value=parseInt(Bras_bas_haut.value)"/>Haut(90): (
+        Bas(0)<input id="Rota_b_h" type="range" name="Bras_bas_haut" min="0" max="90" step="1" value="45" oninput="Clear2(); Clear(); voiture2(); voiture(); Value(); result1.value=parseInt(Bras_bas_haut.value)"/>Haut(90): (
         <output name="result1" style="color:DodgerBlue;">45</output> )
 <p style="color:#365A28">Rotation Arrière(0)-Avant(180):</p>
-        Avant(0)<input id="Rota_a_a" type="range" name="Bras_avant_arriere" min="0" max="90" step="1" value="45" oninput="Clear2(); Clear(); voiture2(); voiture(); Value(); special(); result2.value=parseInt(Bras_avant_arriere.value)"/>Arrière(90): (
+        Avant(0)<input id="Rota_a_a" type="range" name="Bras_avant_arriere" min="0" max="90" step="1" value="45" oninput="Clear2(); Clear(); voiture2(); voiture(); Value(); result2.value=parseInt(Bras_avant_arriere.value)"/>Arrière(90): (
         <output name="result2" style="color:DodgerBlue;">45</output> )
 <p style="color:#365A28">Pince Ouvert(0)-Fermer(180):</p>
-        Fermer(10)<input id="Pince" type="range" name="pince" min="10" max="90" step="1" value="40" oninput="Clear2(); Clear(); voiture2() voiture(); Value(); special(); result3.value=parseInt(pince.value)"/>Ouvert(90): (
+        Fermer(10)<input id="Pince" type="range" name="pince" min="10" max="90" step="1" value="40" oninput="Clear2(); Clear(); voiture2(); voiture(); Value(); result3.value=parseInt(pince.value)"/>Ouvert(90): (
         <output name="result3" style="color:DodgerBlue;">40</output> )
 <br>
   <input type="submit" value="Envoyer">
