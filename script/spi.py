@@ -90,7 +90,7 @@ pwm.ChangeDutyCycle(5)
 time.sleep(2)
 # Potentiomètre 10KOhms raccordés sur le canal ADC #0
 potentiometer_adc = 0
-Log=open("Potentimetre.txt", "w")
+Log=open("Potentiometre.txt", "w")
 while True:
         # Lecture analogique, retourne une valeur entre 0 et 1023 
         # pour une valeur de tension entre 0 et VRef (3.3v)
@@ -105,6 +105,8 @@ while True:
 	angle=0
 	pwm.start(5)
 	time.sleep(1)
+	trim_pot=readadc(potentiometer_adc,SPICLK,SPIMOSI,SPIMISO,SPICS)
+	Log.write("Angle : "+str(angle)+"; Valeur : "+str(trim_pot)+"\n")
 	for loop in range(34):
 		pwm.start(5)
 		angle=angle+5

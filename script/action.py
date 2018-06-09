@@ -18,7 +18,12 @@ angle_deux=formData.getvalue('Bras_avant_arriere')
 angle_pince=formData.getvalue('pince')
 angle_rota=formData.getvalue('motor_base')
 Log=open("Log.txt","a")
-Log.write("["+str(time.asctime( time.localtime(time.time())))+"] "+str(angle)+";"+str(angle_deux)+";"+str(angle_pince)+";"+str(angle_rota)+"\n")
+try:
+	angle=int(angle)
+except:
+	pass
+else:
+	Log.write("["+str(time.asctime( time.localtime(time.time())))+"] "+str(angle)+";"+str(angle_deux)+";"+str(angle_pince)+";"+str(angle_rota)+"\n")
 Log.close()
 print "Content-type:text/html\r\n\r\n"
 
@@ -27,8 +32,11 @@ print '<head>'
 print '<meta charset="UTF-8">'
 print '</head>'
 print '<body bgcolor="#C3E0EC">'
+print '<form style=color:DodgerBlue action="Courbe.py">'
+print '<button class="float-left submit-button">Courbe photosensor</button>'
+print '</form>'
 print '<form style=color:DodgerBlue method="post" class=inline action="Log.py">'
-print '<button calss="float-left submit-button" >Log</button>'
+print '<button class="float-left submit-button" >Log</button>'
 print '<br>'
 print 'Rotation Gauche-Droite : '
 print formData.getvalue('motor_base')
