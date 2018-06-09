@@ -52,6 +52,7 @@ for loop in range(Ligne):
 	print '</tr>'
 print '</tbody>'
 print '</table>'
+print '<address>Open-source:<a href=https://github.com/Alsdrouf/projetRobot>https://github.com/Alsdrouf/projetRobot</a></address>'
 print '</body>'
 print '</html>'
 Log.close()

@@ -86,6 +86,7 @@ for loop in range(Ligne):
 print 'ctx.stroke();'
 print 'ctx.closePath();'
 print '</script>'
+print '<address>Open-source:<a href=https://github.com/Alsdrouf/projetRobot>https://github.com/Alsdrouf/projetRobot</a></address>'
 print '</body>'
 print '</html>'
 Log.close()
