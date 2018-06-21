@@ -2,11 +2,15 @@
 # -*- coding: UTF-8 -*-# enable debugging
 import cgi
 import math
+import time
 formData = cgi.FieldStorage()
 angle= formData.getvalue('Bras_bas_haut')
 angle_deux=formData.getvalue('Bras_avant_arriere')
 angle_pince=formData.getvalue('pince')
 angle_rota=formData.getvalue('motor_base')
+Log=open("Log.txt","a")
+Log.write("["+str(time.asctime( time.localtime(time.time())))+"] "+str(angle)+";"+str(angle_deux)+";"+str(angle_pince)+";"+str(angle_rota))
+Log.close()
 #cgi.test()
 print "Content-type:text/html\r\n\r\n"
 
